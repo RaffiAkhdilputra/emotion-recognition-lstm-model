@@ -1,0 +1,1 @@
+{"num_words": 10000, "max_len": 40, "vocab_size": 36540, "embedding_dim": 100, "num_classes": 6, "emotion_labels": ["depressed", "sad", "neutral", "good", "happy", "excited"]}
