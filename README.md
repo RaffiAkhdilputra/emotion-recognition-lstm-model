@@ -1,89 +1,130 @@
-# Emotion Recognition LSTM Model
+# Emotion Recognition using LSTM
 
-## Overview
+Aplikasi ini adalah sistem **Emotion Recognition** berbasis **LSTM (Long Short-Term Memory)** yang menganalisis emosi dalam teks menggunakan deep learning. Dokumentasi ini telah diperbarui agar sesuai dengan alur dan fungsi yang terdapat dalam file **`streamlit_app.py`**.
 
-This repository contains a Long Short-Term Memory (LSTM) model for **emotion recognition** from text. The system is designed to classify textual inputs into different emotional categories by training a neural network on labeled datasets.
+---
 
-## Features
+## 🚀 Fitur Utama
 
-* Preprocessing pipeline for text (tokenization, padding, etc.)
-* LSTM-based neural network architecture for sequential modeling
-* Support for training, evaluation, and saving/loading models
-* Sample deployment via Jupyter Notebook
+* Input teks bebas untuk dianalisis.
+* Prediksi emosi berdasarkan model LSTM yang telah dilatih.
+* Antarmuka interaktif menggunakan Streamlit.
+* Contoh cepat (Quick Examples) untuk membantu pengguna memahami kategori emosi.
+* Tampilan hasil analisis yang menarik dan intuitif.
 
-## Repository Structure
+---
+
+## 📁 Struktur Proyek
 
 ```
-├── dataset/               # datasets / raw data
-├── models/                # trained model files, checkpoints
-├── train_model.ipynb      # notebook for training the LSTM model
-├── deployment.ipynb       # notebook for running inference / prediction
-├── .gitignore  
-└── LICENSE  
+emotion-recognition-lstm-model/
+│
+├── dataset/               # dataset
+├── model/                 # Model LSTM tersimpan (.keras, tokenizer, config)
+├── deployement.ipynb      # Prototype deployement
+├── README.md              # Dokumentasi proyek
+└── requirements.txt       # Semua dependency
+├── streamlit_app.py       # Aplikasi Streamlit utama
+├── train_model.ipynb      # Model training notebook
 ```
 
-## Installation & Setup
+---
 
-1. Clone the repository:
+## ▶️ Menjalankan Aplikasi
 
-   ```bash
-   git clone https://github.com/RaffiAkhdilputra/emotion-recognition-lstm-model.git
-   cd emotion-recognition-lstm-model
-   ```
+### 1. Clone repository:
 
-2. (Optional) Create a virtual environment:
+```bash
+git clone https://github.com/RaffiAkhdilputra/emotion-recognition-lstm-model.git
+cd emotion-recognition-lstm-model
+```
 
-   ```bash
-   python3 -m venv venv  
-   source venv/bin/activate   # On Windows: venv\Scripts\activate  
-   ```
+### 2. Install dependencies:
 
-3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 3. Jalankan Streamlit:
 
-   *If you don’t have a `requirements.txt`, install typical ML / NLP libraries like `tensorflow`, `numpy`, `pandas`, etc.*
+```bash
+streamlit run streamlit_app.py
+```
 
-## Usage
+---
 
-### Training
+## 🧠 Cara Kerja Aplikasi (Mengikuti streamlit_app.py)
 
-* Open and run `train_model.ipynb` to train the LSTM on your dataset.
-* The notebook contains preprocessing steps, model definition, training loop, and evaluation.
+### 1. **Load Model & Preprocessing**
 
-### Inference / Deployment
+Aplikasi otomatis memuat:
 
-* Use `deployment.ipynb` to run emotion predictions on new text samples.
-* Load your trained model, preprocess input text, and run predictions.
+* model LSTM (`model.keras`)
+* tokenizer (`tokenizer.json`)
+* label encoder (`label_encoder.json`)
 
-## Configuration
+### 2. **Input Teks**
 
-* You can modify hyperparameters (e.g. learning rate, batch size, number of LSTM units) directly in the training notebook.
-* Adjust the maximum sequence length, embedding size, and number of epochs based on your dataset.
+Pengguna memasukkan teks dalam field yang disediakan.
 
-## Dataset
+### 3. **Preprocessing**
 
-* Place your emotion-labeled text data in the `dataset/` folder.
-* Ensure your data is formatted in a way that the training notebook expects (e.g., CSV or JSON with `text` and `label` columns).
+* Lowercase
+* Clean special characters
+* Tokenization
+* Sequence padding
 
-## Contributing
+### 4. **Prediksi Emosi**
 
-Contributions are welcome! Feel free to:
+Model mengeluarkan output probabilitas → dikonversi menjadi label emosi.
 
-* Improve the preprocessing pipeline
-* Try different model architectures (e.g., bidirectional LSTM, GRU)
-* Add more emotion categories
-* Optimize hyperparameters
-* Add evaluation metrics or dashboard
+### 5. **Tampilan Hasil**
 
-Please fork the repo and submit pull requests, or open issues for discussion.
+Menggunakan komponen Streamlit seperti:
 
-## License
+* `st.success()`
+* `st.error()`
+* `st.info()`
+* Card-style preview
 
-This project is licensed under the **Unlicense**.
+---
 
-## Contact
+## 📝 Kategori Emosi
 
-Created by **Raffi Akhdilputra**. For questions or collaboration, you can reach me via my GitHub profile.
+Berdasarkan implementasi di `streamlit_app.py`, kategori emosi yang tersedia:
+
+* 😔 Depressed
+* 😢 Sad
+* 😐 Neutral
+* 🙂 Good
+* 😄 Happy
+* 🤩 Excited
+
+---
+
+## 🧪 Quick Example
+
+Di sidebar terdapat contoh cepat untuk pengguna mencoba berbagai emosi:
+
+```python
+examples = {
+    "Depressed": "I feel so hopeless today...",
+    "Sad": "I miss my friends so much.",
+    "Neutral": "I just woke up and ate breakfast.",
+    "Good": "Today was pretty nice!",
+    "Happy": "I passed my exam!",
+    "Excited": "I can’t wait for the concert tonight!"
+}
+```
+
+---
+
+## 📦 Deployment
+
+Streamlit Cloud: https://emotion-recognition-lstm-model.streamlit.app/
+
+---
+
+## 📄 Lisensi
+
+Proyek ini menggunakan lisensi **UNLICENSED LICENSE**.
