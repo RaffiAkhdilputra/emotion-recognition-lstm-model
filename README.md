@@ -61,7 +61,7 @@ Aplikasi otomatis memuat:
 
 * model LSTM (`model.keras`)
 * tokenizer (`tokenizer.json`)
-* label encoder (`label_encoder.json`)
+* label encoder (`config.json`)
 
 ### 2. **Input Teks**
 
